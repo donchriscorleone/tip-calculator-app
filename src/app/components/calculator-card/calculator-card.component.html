@@ -1,23 +1,23 @@
 <div class="container">
     <div class="bill-section">
         <p>Bill</p>
-        <input type="number" [formControl]="bill" [class.error-state]="isError(bill)">
+        <input type="number" [formControl]="bill" [class.error-state]="isError(bill)" (keyup)="calculateTip()">
     </div>
     <div class="tip-section">
         <p>Select Tip %</p>
         <div class="buttons">
-            <button>5%</button>
-            <button>10%</button>
-            <button>15%</button>
-            <button>25%</button>
-            <button>50%</button>
-            <button>Custom</button>
+            <button (click)="changeTip(.05)" [class.tip-active]="tip == .05">5%</button>
+            <button (click)="changeTip(.10)" [class.tip-active]="tip == .10">10%</button>
+            <button (click)="changeTip(.15)" [class.tip-active]="tip == .15">15%</button>
+            <button (click)="changeTip(.25)" [class.tip-active]="tip == .25">25%</button>
+            <button (click)="changeTip(.5)" [class.tip-active]="tip == .50">50%</button>
+            <input type="text" class="custom-button" [formControl]="custom" [value]="custom.value" (keyup)="changeTip((custom.value / 100))" (focusout)="!custom.touched && custom.setValue('Custom')" (focusin)="!custom.touched && custom.setValue(null)">
         </div>
     </div>
     <div class="people-section">
         <p>Number of People</p>
         <span *ngIf="isError(numberOfPeople)">Can't be zero</span>
-        <input type="number" [formControl]="numberOfPeople" [class.error-state]="isError(numberOfPeople)">
+        <input type="number" [formControl]="numberOfPeople" [class.error-state]="isError(numberOfPeople)" (keyup)="calculateTip()">
     </div>
     <div class="amount-summary">
         <div class="tip">
@@ -26,7 +26,7 @@
                 <p>/ person</p>
             </div>
             <div class="amount">
-                <span>$4.27</span>
+                <span>${{tipAmount}}</span>
             </div>
         </div>
         <div class="total">
@@ -35,9 +35,9 @@
                 <p>/ person</p>
             </div>
             <div class="amount">
-                <span>$32.79</span>
+                <span>${{total}}</span>
             </div>
         </div>
-        <button>RESET</button>
+        <button (click)="reset()">RESET</button>
     </div>
 </div>

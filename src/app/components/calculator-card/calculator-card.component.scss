@@ -77,6 +77,24 @@ p {
                 background-color: $light-grayish-cyan;
             }
         }
+
+        .custom-button {
+            width: 150px;
+            height: 50px;
+            text-align: center;
+            border: none;
+            outline: none;
+            background-color: $light-grayish-cyan-2;
+            color: $dark-grayish-cyan;
+            font-size: 1.2rem;
+            font-weight: $bold;
+
+            justify-self: center;
+        }
+
+        .tip-active {
+            background-color: $strong-cyan;
+        }
     }
 }
 
@@ -179,6 +197,11 @@ p {
 
         .buttons {
             grid-template-columns: repeat(3, 1fr);
+
+            .custom-button {
+                width: 90px;
+                height: 40px;
+            }
         }
     }
 
