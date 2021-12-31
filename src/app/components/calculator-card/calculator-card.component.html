@@ -1,1 +1,43 @@
-<p>calculator-card works!</p>
+<div class="container">
+    <div class="bill-section">
+        <p>Bill</p>
+        <input type="number" [formControl]="bill" [class.error-state]="isError(bill)">
+    </div>
+    <div class="tip-section">
+        <p>Select Tip %</p>
+        <div class="buttons">
+            <button>5%</button>
+            <button>10%</button>
+            <button>15%</button>
+            <button>25%</button>
+            <button>50%</button>
+            <button>Custom</button>
+        </div>
+    </div>
+    <div class="people-section">
+        <p>Number of People</p>
+        <span *ngIf="isError(numberOfPeople)">Can't be zero</span>
+        <input type="number" [formControl]="numberOfPeople" [class.error-state]="isError(numberOfPeople)">
+    </div>
+    <div class="amount-summary">
+        <div class="tip">
+            <div class="detail-container">
+                <h2>Tip Amount</h2>
+                <p>/ person</p>
+            </div>
+            <div class="amount">
+                <span>$4.27</span>
+            </div>
+        </div>
+        <div class="total">
+            <div class="detail-container">
+                <h2>Total</h2>
+                <p>/ person</p>
+            </div>
+            <div class="amount">
+                <span>$32.79</span>
+            </div>
+        </div>
+        <button>RESET</button>
+    </div>
+</div>

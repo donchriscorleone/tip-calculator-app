@@ -1,0 +1,41 @@
+@import './scss/variables';
+
+::ng-deep {
+    body {
+        background-color: $light-grayish-cyan;
+        font-family: $font;
+        font-size: $font-size;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+main {
+    margin: 50px auto 0;
+    display: grid;
+    justify-items: center;
+    row-gap: 40px;
+}
+
+calculator-card {
+    justify-self: stretch;
+}
+
+@media screen and (min-width: 399px) {
+    ::ng-deep {
+        body {
+            padding: 0px 20px;
+        }
+    }
+
+    main {
+        max-width: 400px;
+    }
+}
+
+@media screen and (min-width: 850px) {
+    main {
+        max-width: 700px;
+        margin: 10vh auto;
+    }
+}
